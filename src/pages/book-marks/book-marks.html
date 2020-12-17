@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Bookmarks</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to reload Tags" refreshingSpinner="circles"
+      refreshingText="Reloading Tags...">>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" [showCancelButton]="true"
+    (ionClear)="onClear($event)" (ionInput)="SearchTags()"></ion-searchbar>
+
+  <ion-list>
+    <button ion-item *ngFor="let bkmk of bkmks" (click)="openBkMkOption(bkmk.id, bkmk.object_text)" class="half-marginbottom">
+      {{bkmk.object_text}}<span hidden="true">{{bkmk.id}}</span>
+    </button>
+  </ion-list>
+
+
+  <div *ngIf="notags === 'none'" class="marginleft paddingleft marginright paddingright marginbottom">
+    <div class="normaltext center bold greentext half-padding" (click)="LoadLess()">
+      <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Back to Top
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="LoadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more tags...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

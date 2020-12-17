@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="light">
+      <img src="assets/imgs/icon.png" class="logomenu marginleft left" />
+    <ion-title>New Book/Article</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="">
+    <div class="form-group">
+      <label for="title">Select an Option</label>
+      <select required class="form-control form-control-lg custom-select slightly-largetext input-group-lg" [(ngModel)]="bk.bkoption">
+        <option selected>Select an Option...</option>
+        <option value="0">Book</option>
+        <option value="1">Article</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="title">Select a Category</label>
+      <select id="selectedcontid" *ngFor="let bkcategory of bookcategory" required  [(ngModel)]="bk.bkcat"
+        class="form-control form-control-lg custom-select slightly-largetext">
+        <option selected>Select a Category...</option>
+        <option *ngFor="let bkcat of bkcategory" class="smalltext" value="{{ bkcat.id }}">{{ bkcat.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group input-group-lg">
+      <label for="title">Book Title</label>
+      <input type="text" required class="form-control form-control-lg slightly-largetext" name="title"  [(ngModel)]="bk.bktitle"
+        placeholder="Enter the Book title">
+    </div>
+    <div class="form-group mt-3">
+      <label for="summary">Book Summary</label>
+      <textarea class="form-control slightly-largetext" required rows="9" placeholder="Enter the Book Summary"  [(ngModel)]="bk.bksummary"
+        name="summary"></textarea>
+    </div>
+    <div class="borderbottom ashborder wide marginbottom margintop">
+        <div class="center">
+          <div text-center ion-text color="dark"
+            class="parts mediumtext bold z-10 white neg-marginbottom padding-horizontal half-paddingtop">Add Section</div>
+        </div>
+      </div>
+    <div class="form-group input-group-lg">
+      <label for="title">Section Title</label>
+      <input type="text" required class="form-control form-control-lg slightly-largetext" name="title"  [(ngModel)]="bk.sntitle"
+        placeholder="Enter the Section Title">
+    </div>
+    <div class="form-group mt-3">
+      <label for="body">Section Content</label>
+      <textarea class="form-control slightly-largetext" required rows="12" placeholder="Enter the Section Content"  [(ngModel)]="bk.sncontent"
+        name="body"></textarea>
+    </div>
+
+    <div class="text-center">
+      <button type="button" class="btn btn-dark btn-lg btn-block slightly-largetext" (click)="onSave()">Save
+        Book</button>
+    </div>
+  </div>
+</ion-content>

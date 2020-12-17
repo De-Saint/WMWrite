@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Table Of Contents</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="dark" (click)="onClose()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item #card detail-push *ngFor="let bksection of bksections" class="normaltext" [navPush]="pushPage" [navParams]="params">
+    <h2 hidden=true>{{bksection.id}}</h2>
+    <span class="half-marginright parts">{{bksection.IndexNumber}}</span>
+    <span class="wrap2 mini-marginleft parts marginright paddingright"
+      (click)="ReadSection(bksection.id)">{{bksection.Name}}</span>
+  </ion-item>
+</ion-content>

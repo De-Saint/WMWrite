@@ -1,0 +1,12 @@
+page-new-book {
+    .summaryheight{
+        height: 320px;
+        overflow: auto;
+    }
+    [contenteditable=true]:empty:not(:focus):before {
+        content: attr(data-text)
+    }
+    .title:empty:not(:focus):before {
+        content: attr(data-placeholder)
+      }
+}

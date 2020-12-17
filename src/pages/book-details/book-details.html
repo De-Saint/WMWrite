@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Book Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="center">
+    <div class="normaltext  half-margintop">
+      Book Title
+    </div>
+    <div class=" normaltext bold half-padding">
+      {{book?.Title}}
+    </div>
+    <div class="margintop  half-margintop">
+      <span class="smalltext">Date Modified:</span> {{book?.LastUpdatedDate}} {{book?.LastUpdatedTime}}
+    </div>
+    <div class="normaltext half-padding">
+      <span class="smalltext">Created By:</span> {{book?.CreatorName}}
+    </div>
+    <div class="normaltext half-padding marginbottom">
+      <span class="smalltext">Date Created:</span> {{book?.DateCreated}}
+    </div>
+    <div class="marginbottom">
+      <span class="marginright mini-padding text-secondary" (click)="onOpenSections()"> <i class="fa fa-fw fa-list"></i>
+        {{book?.Sections}}</span>
+      <span class="marginright mini-padding text-success" (click)="onOpenComments()"> <i
+          class="fa fa-fw fa-commenting-o"></i>
+        {{book?.Comments}}</span>
+      <span class="marginright mini-padding text-primary" (click)="onOpenIndex()"><i
+          class="fa fa-fw fa-sticky-note-o"></i>
+        {{book?.Indexes}}</span>
+      <span class="marginright mini-padding  text-info" (click)="onOpenTags()"><i class="fa fa-fw fa-tag"></i>
+        {{book?.Tags}}</span>
+    </div>
+  </div>
+
+  <div class="SearchBtn marginbottom">
+    <button ion-button color="dark" outline (click)="onOpenBook()" class="BtnText2">
+      <i class="fa fa-external-link marginright"></i> Open</button>
+    <button ion-button color="dark" outline (click)="OpenBookAction()"
+      class="half-neg-marginleft padding-vertical btn22"><i class="fa fa-ellipsis-h bold"></i>
+    </button>
+  </div>
+  <div class="">
+    <div class="normaltext half-margintop center">
+      Book Summary
+    </div>
+    <div class="overflow padding-horizontal normaltext wrap lineup" contenteditable="false">
+      {{book?.Summary}}
+    </div>
+
+  </div>
+
+
+  <div class="borderbottom ashborder wide marginbottom margintop">
+    <div class="center">
+      <div text-center ion-text justify color="dark"
+        class="parts mediumtext bold z-10 white neg-marginbottom padding-horizontal half-paddingtop">Related Books or
+        Articles</div>
+    </div>
+  </div>
+  <ion-card class="" *ngFor="let book of books; let i=index">
+    <ion-card-header class="center">
+      <div class="newWrap text"> {{book.Title}}</div>
+    </ion-card-header>
+
+    <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+      <div class="half-marginbottom d-none">
+        <span class="smalltext">Date Created:</span> {{book.DateCreated}}
+      </div>
+      <div class="half-marginbottom">
+        <span class="smalltext">Created By:</span> {{book.CreatorName}}
+      </div>
+
+    </ion-card-title>
+    <ion-card-content class="text-center">
+      <div id="SectionContnt" class="wrap normaltext text" innerHTML="{{book.Summary}}">
+      </div>
+      <div class="half-margintop">
+        <span class="marginright mini-padding text-secondary" (click)="onOpenSections(book.id)"> <i
+            class="fa fa-fw fa-list"></i>
+          {{book.Sections}}
+        </span>
+        <span class="marginright mini-padding text-success" (click)="onOpenComments(book.id)"> <i
+            class="fa fa-fw fa-commenting-o"></i>
+          {{book.Comments}}</span>
+        <span class="marginright mini-padding text-primary" (click)="onOpenIndex(book.id)"><i
+            class="fa fa-fw fa-sticky-note-o"></i>
+          {{book.Indexes}}</span>
+        <span class="marginright mini-padding text-info " (click)="onOpenTags(book.id)"><i class="fa fa-fw fa-tag"></i>
+          {{book.Tags}}</span>
+      </div>
+      <button ion-button color="dark" outline small (click)="OpenBook(book.id)" class="half-margintop">
+        Details
+      </button>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

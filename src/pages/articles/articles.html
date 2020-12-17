@@ -1,0 +1,62 @@
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" [showCancelButton]="true"
+    (ionClear)="onClear($event)" (ionInput)="SearchArticles()">
+  </ion-searchbar>
+  <ion-card class="" *ngFor="let article of articles">
+    <ion-card-header class="center">
+      <div class="newWrap text"> {{article.Title}}</div>
+    </ion-card-header>
+
+    <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+      <div class="half-marginbottom d-none">
+        <span class="smalltext">Date Created:</span> {{article.DateCreated}}
+      </div>
+      <div class="half-marginbottom">
+        <span class="smalltext">Created By:</span> {{article.CreatorName}}
+      </div>
+
+    </ion-card-title>
+    <ion-card-content class="text-center neg-margintop">
+      <div id="" class="wrap normaltext text" innerHTML="{{article.Summary}}">
+      </div>
+      <div class="half-margintop">
+        <span class="marginright mini-padding text-secondary" (click)="onOpenSections(article.id)"> <i
+            class="fa fa-fw fa-list"></i>
+          {{article.Sections}}
+        </span>
+        <span class="marginright mini-padding text-success" (click)="onOpenComments(article.id)"> <i
+            class="fa fa-fw fa-commenting-o"></i>
+          {{article.Comments}}</span>
+        <span class="marginright mini-padding text-primary" (click)="onOpenIndex(article.id)"><i
+            class="fa fa-fw fa-sticky-note-o"></i>
+          {{article.Indexes}}</span>
+        <span class="marginright mini-padding text-info " (click)="onOpenTags(article.id)"><i
+            class="fa fa-fw fa-tag"></i>
+          {{article.Tags}}</span>
+      </div>
+      <button ion-button color="dark" outline small (click)="OpenBook(article.id)" class="half-margintop">
+        Details
+      </button>
+    </ion-card-content>
+
+  </ion-card>
+
+  <div class="marginleft paddingleft marginright paddingright marginbottom margintop" *ngIf="nobooks === 'nobooks'">
+    No result
+  </div>
+  <div *ngIf="nobooks === 'none'" class="marginleft paddingleft marginright paddingright marginbottom">
+    <div class="slightly-largetext center bordertop bold half-padding " (click)="getlessBooks()">
+      <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Back to Top
+    </div>
+  </div>
+
+
+
+  <ion-infinite-scroll (ionInfinite)="LoadMoreBooks($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more articles...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

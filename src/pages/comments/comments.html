@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Comments</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let bkcomment of bkcomments" class="comments">
+    <h2 class="hide" id="cid">{{bkcomment.id}}</h2>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="assets/imgs/Logo2.fw.png">
+      </ion-avatar>
+      <h2 class="left">{{bkcomment.UserName}}</h2>
+      <span class="right">
+        <i class="fa fa-ellipsis-v right half-marginleft slightly-largetext mini-padding" aria-hidden="true"
+          (click)="OpenCommentAction(bkcomment.id, bkcomment.comment)"></i>
+      </span>
+      <div style="clear: both"></div>
+      <p>{{bkcomment.date}}<span class="half-marginleft">{{bkcomment.time}}</span></p>
+    </ion-item>
+    <ion-card-title>
+      <div class="text-center mediumtext">
+        <span class="marginright mini-padding  text-warning" (click)="onOpenBooks(bkcomment.id)"> <i class="fa fa-fw fa-book"></i>
+          {{bkcomment.Books}}</span>
+        <span class="marginright mini-padding  text-secondary" (click)="onOpenSections(bkcomment.id)"> <i
+            class="fa fa-fw fa-list"></i>
+          {{bkcomment.Sections}}</span>
+        <span class="marginright mini-padding  text-success" (click)="onOpenTag(bkcomment.id)"> <i
+            class="fa fa-fw fa-tag"></i>
+          {{bkcomment.Tags}}</span>
+        <span class="marginright mini-padding text-primary " (click)="onOpenIndex(bkcomment.id)"><i
+            class="fa fa-fw fa-sticky-note-o"></i>
+          {{bkcomment.Indexes}}</span>
+        <span class="marginright mini-padding text-info" (click)="onOpenBookMarks(bkcomment.id)"><i class="fa fa-fw fa-bookmark"></i>
+          {{bkcomment.Bookmarks}}</span>
+      </div>
+    </ion-card-title>
+    <ion-card-content class="selectable thinkborderleft" (select)="Select()">
+      {{bkcomment.comment}}
+    </ion-card-content>
+    <ion-row wrap>
+
+      <ion-col width-5>
+        <button ion-button icon-left clear small color="dark" (click)="likes(bkcomment.id)">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div class="mediumtext"> {{bkcomment.likes}} Likes</div>
+        </button>
+      </ion-col>
+
+      <ion-col width-5>
+        <button ion-button icon-left clear small color="dark" (click)="replies(bkcomment.id)">
+          <ion-icon name="chatbubbles"></ion-icon>
+          <div class="mediumtext">{{bkcomment.replies}} Replies</div>
+        </button>
+      </ion-col>
+
+      <ion-col width-5>
+        <button ion-button icon-left clear small color="dark" (click)="dislikes(bkcomment.id)">
+          <ion-icon name="thumbs-down"></ion-icon>
+          <div class="mediumtext"> {{bkcomment.dislikes}} Dislikes</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div class="center normaltext margintop half-padding" *ngIf="nobkcomments === 'nobkcomments'">No Comments</div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-input type="text" id="CommentContent" name="commenttext" [(ngModel)]="comment.commenttext" value=""
+      class="border radius normaltext half-padding darkborder" placeholder="Type your comment here"></ion-input>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="SaveComment()" color="dark">
+        Post
+        <ion-icon name="save"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-buttons start>
+      <button ion-button icon-only color="dark" (click)="onClose()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Edit Book Details</ion-title>
+    <ion-buttons end (click)="onSave()">
+      <button ion-button icon-only>
+        <i class="fa fa-floppy-o half-marginright slightly-largetext"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="">
+    <div class="normaltext half-margintop center">
+      Book Title 
+    </div>
+    <div id="BOOKTitle" class="overflow padding-horizontal normaltext wrap lineup" contenteditable="true">
+        {{book?.Title}}
+    </div>
+
+  </div>
+  <div class="">
+    <div class="normaltext half-margintop center">
+      Book Summary
+    </div>
+    <div id="BOOKSummary" class="overflow padding-horizontal normaltext wrap lineup" contenteditable="true">
+      {{book?.Summary}}
+    </div>
+
+  </div>
+
+</ion-content>
+<ion-footer class="overflow-hide silver bordertop greyborder" id="FormattingOptions">
+  <ion-toolbar no-border-top class="wide scroll silver tool">
+    <div class="footer-options">
+      <button ion-button outline color="dark" (click)="Bold()">
+        <i class="fa fa-bold normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Italic()">
+        <i class="fa fa-italic normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Underline()">
+        <i class="fa fa-underline normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Erase()">
+        <i class="fa fa-eraser normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Undo()">
+        <i class="fa fa-undo normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Redo()">
+        <i class="fa fa-repeat normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Left()">
+        <i class="fa fa-align-left normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Center()">
+        <i class="fa fa-align-center normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Justify()">
+        <i class="fa fa-align-justify normaltext" aria-hidden="true"></i>
+      </button>
+      <button ion-button outline color="dark" (click)="Right()">
+        <i class="fa fa-align-right normaltext" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

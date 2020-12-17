@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="light">
+      <ion-buttons start>
+          <button ion-button icon-only color="dark" (click)="onClose()">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>Edit Comment</ion-title>
+    <ion-buttons end (click)="onUpdate()" *ngIf="optionText === 'edit'">
+        <button ion-button icon-only>
+        <i class="fa fa-floppy-o half-marginright slightly-largetext"></i>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div contenteditable="true" id="CommentCont" class="wrap padding margintop selectable" 
+  [innerHTML]="commenttext" (select)="Select()">
+  </div>
+</ion-content>
+<ion-footer *ngIf="optionText === 'reply'">
+    <ion-toolbar>
+      <ion-input type="text" name="commentText" [(ngModel)]="comment.commentText" value=""
+        class="border radius normaltext half-padding" placeholder="Type your reply here"></ion-input>
+      <ion-buttons end>
+        <button ion-button icon-end (click)="onReply()" color="dark">
+          Reply
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

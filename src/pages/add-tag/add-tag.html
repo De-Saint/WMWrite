@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Add Tag</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to reload Tags" refreshingSpinner="circles"
+          refreshingText="Reloading Tags...">>
+        </ion-refresher-content>
+      </ion-refresher>
+  <ion-searchbar [(ngModel)]="searchTerm" id="searchbar"  (ionCancel)="TagonCancel($event)"
+    [showCancelButton]="false" (ionClear)="TagonClear($event)" (ionInput)="SearchTags()">
+  </ion-searchbar>
+  <ion-list>
+    <button ion-item *ngFor="let tag of tags" (click)="openTagOption(tag.id, tag)" class="half-marginbottom">
+      {{tag.name}}<span hidden="true">{{tag.id}}</span>
+    </button>
+  </ion-list>
+  <div *ngIf="notags === 'none'" class="marginleft paddingleft marginright paddingright marginbottom">
+    <div class="normaltext center bold greentext half-padding" (click)="getlessTags()">
+      <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Back to Top
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="LoadMoreTags($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more tags...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

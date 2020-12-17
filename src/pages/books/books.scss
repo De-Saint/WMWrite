@@ -1,0 +1,63 @@
+page-books {
+  ion-card-header {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal !important;
+  }
+
+  .card-content-ios {
+    padding: 7px 16px 14px !important;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  .card-header-ios {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #333;
+    padding: 11px !important;
+  }
+
+  .logomenu {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: transparent !important;
+    border-bottom: none !important;
+  }
+  
+
+}
+.fabhanger {
+  position: fixed;
+     right: 0.3em;
+     bottom: 4em;
+     z-index: 10000
+ }
+.fabhanger button {
+  // float: left; 
+  bottom: 1.9em; 
+ }
+ .fab {
+  contain: layout;
+}
+
+button[ion-fab] {
+  overflow: visible;
+  position: relative;
+  ion-label {
+      position: absolute;
+      top: -8px;
+      right: 40px;
+      color: white;
+      background-color: #000;
+      line-height: 24px;
+      padding: 4px 8px;
+      border-radius: 4px;
+  }
+}

@@ -1,0 +1,53 @@
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" [showCancelButton]="true"
+    (ionClear)="onClear($event)" (ionInput)="SearchIndexes()"></ion-searchbar>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to reload Indexes" refreshingSpinner="circles"
+      refreshingText="Reloading Indexes...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card class="" *ngFor="let index of indexes">
+    <ion-card-header class="center">
+      <div class="newWrap"> {{index.header}}</div>
+      <div class="newWrap"> {{index.subheader}}</div>
+    </ion-card-header>
+
+    <ion-card-content class="text-center">
+      <div id="SectionContnt" class="wrap mediumtext half-marginbottom" innerHTML="{{index.body_text}}">
+      </div>
+      <div class="half-marginbottom">
+        <span class="marginright mini-padding text-warning" (click)="onOpenBooks(index.id)"> <i
+            class="fa fa-fw fa-book"></i>{{index.Books}}</span>
+        <span class="marginright mini-padding text-secondary" (click)="onOpenSections(index.id)">
+          <i class="fa fa-fw fa-list"></i>{{index.Sections}}</span>
+        <span class="marginright mini-padding text-success" (click)="onOpenComments(index.id)"> <i
+            class="fa fa-fw fa-commenting-o"></i>
+          {{index.Comments}}</span>
+        <span class="marginright mini-padding text-primary" (click)="onOpenBookMarks(index.id)"><i
+            class="fa fa-fw fa-sticky-note-o"></i>
+          {{index.Bookmarks}}</span>
+        <span class="marginright mini-padding text-info" (click)="onOpenTags(index.id)"><i class="fa fa-fw fa-tag"></i>
+          {{index.Tags}}</span>
+      </div>
+      <button ion-button color="dark" outline small (click)="OpenIndexAction(index)" class="half-margintop mediumtext">
+        Option
+      </button>
+    </ion-card-content>
+
+  </ion-card>
+  <div class="marginleft paddingleft marginright paddingright marginbottom margintop" *ngIf="noindexes === 'noindexes'">
+    No result
+  </div>
+
+  <div *ngIf="noindexes === 'none'" class="marginleft paddingleft marginright paddingright marginbottom">
+    <div class="slightly-largetext center bold  half-padding bordertop" (click)="getlessIndexes()">
+      <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Back to Top
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="LoadMoreIndexes($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more indexes...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+ 
+</ion-content>

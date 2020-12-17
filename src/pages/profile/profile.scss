@@ -1,0 +1,110 @@
+page-profile {
+  .splash-bg2 {
+    position: relative;
+    background: url('../assets/imgs/write.jpg') no-repeat transparent;
+    background-size: cover;
+    height: 20%;
+    z-index: 1;
+    background-repeat: repeat-x;
+    animation: animatedBackground 40s linear infinite;
+  }
+  .splash-info {
+    position: relative;
+    z-index: 2;
+    margin-top: -34px;
+  }
+  .splash-logo {
+    background-size: 100%;
+    width: 6em;
+    height: 6em;
+    margin-left: 1.2em;
+    margin-top: -1em;
+    overflow: hidden;
+  }
+  .splash-intro {
+    margin-top: 3em;
+    margin-right: 1em;
+  }
+  img {
+    // max-height: 100%;
+    border: 0;
+    height: 100%;
+  }
+  .imgUser {
+    font-size: 10em;
+  }
+  .logomenu {
+    width: 1.5em !important;
+    height: 1.5em !important;
+  }
+  .userName {
+    position: absolute;
+    height: 41px;
+    left: 25%;
+    top: calc(50% - 91px/2 - 91.5px);
+    font-size: 25px !important;
+    color: #000000;
+  }
+
+  .userType {
+    position: absolute;
+    height: 41px;
+    left: 38.93%;
+    top: calc(50% - 98px);
+    color: #868282;
+  }
+
+  .userPhone {
+    position: absolute;
+    height: 41px;
+    width: 40em;
+    left: 30%;
+    top: 42%;
+    color: #868282;
+  }
+
+  .userEmail {
+    position: absolute;
+    height: 41px;
+    width: 40em;
+    left: 20%;
+    top: 50%;
+    color: #868282;
+  }
+  .userSave {
+    position: absolute;
+    left: 30%;
+    top: 60%;
+    color: #000;
+  }
+
+
+
+  .textalign {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 41px;
+    letter-spacing: 0.229412px;
+  }
+
+  .btnLogout {
+    margin-top: 30.5em !important;
+    align-items: center;
+    margin-left: 5.5em;
+  }
+
+  .BtnText2 {
+    // position: absolute;
+    height: 48px;
+    width: 200px;
+
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 39px;
+    letter-spacing: 0.320312px;
+  }
+}

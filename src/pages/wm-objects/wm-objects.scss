@@ -1,0 +1,19 @@
+page-wm-objects {
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-and-icon {
+        height: 60px !important;
+        padding-top: 8px;
+    }  
+
+    .text-ios-dark {
+        color: #222;
+        font-size: .8em !important;
+    }
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-and-icon ion-icon {
+        margin-bottom: 5px !important;
+    }
+    
+}
+.logomenu {
+    width: 1.8em !important;
+    height: 1.8em !important;
+  }

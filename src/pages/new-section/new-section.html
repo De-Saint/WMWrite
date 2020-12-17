@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>New Section</ion-title>
+    <ion-buttons end (click)="onSave()">
+      <button ion-button icon-only>
+        <i class="fa fa-floppy-o half-marginright slightly-largetext"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="">
+    <div class="form-group input-group-lg">
+      <label for="title">Section Title</label>
+      <input type="text" required class="form-control form-control-lg slightly-largetext" name="title"
+        [(ngModel)]="bk.sntitle" placeholder="Enter the Section Title">
+    </div>
+    <div class="form-group mt-3">
+      <label for="body">Section Content</label>
+      <textarea class="form-control slightly-largetext" required rows="15" placeholder="Enter the Section Content"
+        [(ngModel)]="bk.sncontent" name="body"></textarea>
+    </div>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-dark btn-lg btn-block slightly-largetext" (click)="onSave()">Save
+          Section</button>
+      </div>
+  </div>
+
+
+  <!-- <div #popoverText class="text-to-change">
+    <div contenteditable="true" id="SectionTitle"
+      class="wrap normaltext half-marginleft primaryborder half-marginright padding margintop selectable"
+      data-text="Type your section title here"></div>
+    <div class="margintop"></div>
+    <div id="SectionContent" contenteditable="true"
+      class="wrap normaltext summaryheight half-marginleft primaryborder half-marginright padding margintop selectable"
+      (select)="Select()" data-text="Type your section content here"></div>
+  </div> -->
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Tag Details</ion-title>
+    <ion-buttons end (click)="onSave()">
+      <button ion-button icon-only>
+        <i class="fa fa-floppy-o half-marginright slightly-largetext"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="">
+    Tag Text:
+    <div text-justify ion-text color="dark" class="margintop">
+      <div id="tagname" class="normaltext wrap bold half-margintop" contenteditable="true">{{tagdetails?.name}}</div>
+    </div>
+    <div style="clear: both"></div>
+    <hr />
+
+    <div class="text-center">
+        <span class="marginright mini-padding  text-warning" (click)="onOpenBooks()"> <i
+            class="fa fa-fw fa-book"></i>
+          {{tagdetails?.Books}}</span>
+        <span class="marginright mini-padding  text-secondary" (click)="onOpenSections()"> <i
+            class="fa fa-fw fa-list"></i>
+          {{tagdetails?.Sections}}</span>
+        <span class="marginright mini-padding  text-success" (click)="onOpenComments()"> <i
+            class="fa fa-fw fa-commenting-o"></i>
+          {{tagdetails?.Comments}}</span>
+        <span class="marginright mini-padding text-primary " (click)="onOpenIndex()"><i
+            class="fa fa-fw fa-sticky-note-o"></i>
+          {{tagdetails?.Indexes}}</span>
+        <span class="marginright mini-padding text-info" (click)="onOpenBookMarks()"><i
+            class="fa fa-fw fa-tag"></i>
+          {{tagdetails?.Bookmarks}}</span>
+      </div>
+  </div>
+</ion-content>

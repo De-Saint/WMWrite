@@ -1,0 +1,67 @@
+
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Books</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" [showCancelButton]="true"
+      (ionClear)="onClear($event)" (ionInput)="SearchBooks()">
+    </ion-searchbar>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to reload Books" refreshingSpinner="circles"
+        refreshingText="Reloading Books...">>
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="" *ngFor="let book of books">
+        <ion-card-header class="center">
+          <div class="newWrap text"> {{book.Title}}</div>
+        </ion-card-header>
+  
+        <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+          <div class="half-marginbottom d-none">
+            <span class="smalltext">Date Created:</span> {{book.DateCreated}}
+          </div>
+          <div class="half-marginbottom">
+            <span class="smalltext">Created By:</span> {{book.CreatorName}}
+          </div>
+        </ion-card-title>
+        <ion-card-content class="text-center neg-margintop">
+          <div id="SectionContnt"  class="wrap normaltext text" innerHTML="{{book.Summary}}">
+          </div>
+          <div class="margintop half-marginbottom">
+            <span class="marginright mini-padding text-secondary" (click)="onOpenSections(book.id)"> <i
+                class="fa fa-fw fa-list"></i>
+              {{book.Sections}}
+            </span>
+            <span class="marginright mini-padding text-success" (click)="onOpenComments(book.id)"> <i
+                class="fa fa-fw fa-commenting-o"></i>
+              {{book.Comments}}</span>
+            <span class="marginright mini-padding text-primary" (click)="onOpenIndex(book.id)"><i
+                class="fa fa-fw fa-sticky-note-o"></i>
+              {{book.Indexes}}</span>
+            <span class="marginright mini-padding text-info " (click)="onOpenTags(book.id)"><i
+                class="fa fa-fw fa-tag"></i>
+              {{book.Tags}}</span>
+          </div>
+          <button ion-button color="dark" outline small (click)="OpenBook(book.id)" class="half-margintop">
+            Details
+          </button>
+        </ion-card-content>
+    </ion-card>
+    
+    <div class="marginleft paddingleft marginright paddingright marginbottom margintop" *ngIf="nobooks === 'nobooks'">
+      No result
+    </div>
+    <div *ngIf="nobooks === 'none'" class="marginleft paddingleft marginright paddingright marginbottom">
+      <div class="slightly-largetext center bordertop bold half-padding " (click)="getlessBooks()">
+        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Back to Top
+      </div>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="LoadMoreBooks($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more books...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+  

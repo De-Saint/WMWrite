@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="light">
+    <img src="assets/imgs/icon.png" class="logomenu marginleft left" />
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="splash-bg2"></div>
+  <div class="splash-info">
+    <div class="splash-logo left round">
+      <img src="assets/imgs/icon.png" />
+    </div>
+    <div class="splash-intro right">
+      <button ion-button icon-left round small outline color="danger" (click)="onLogout()">
+        Logout
+      </button>
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="padding-horizontal">
+    <div class="largetext half-paddingleft">{{details?.last_name}} {{details?.first_name}}</div>
+    <div class="greytext left">{{details?.usertype}}
+    </div>
+    <div style="clear: both;"></div>
+    <div class="row slightly_largetext">
+      <div class="col ">
+        <div class="mediumtext">
+          Email
+        </div>
+        <strong>{{details?.email}} </strong>
+      </div>
+    </div>
+
+    <div class="row slightly_largetext">
+      <div class="col ">
+        <div class="mediumtext">
+          Phone Number
+        </div>
+        <strong>{{details?.phone_number}} </strong>
+      </div>
+      <div class="col text-right">
+        <div class="mediumtext">
+          Date Joined
+        </div>
+        <strong>{{details?.date_joined}} </strong>
+      </div>
+    </div>
+    <div style="clear:both;">
+    </div>
+  </div>
+
+
+
+</ion-content>

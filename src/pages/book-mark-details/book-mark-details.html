@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>BookMark Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="">
+    <div text-justify color="dark" class="margintop">
+      Bookmark Text
+      <div class="normaltext wrap bold half-margintop">{{bkmkTxt}}</div>
+    </div>
+    <div style="clear: both"></div>
+    <hr />
+    <div text-justify ion-text color="dark" class="margintop">
+      Created By:
+    </div>
+    <div class="normaltext bold half-margintop">
+      {{bkmkdetails?.username}}
+    </div>
+    <hr />
+    <div text-justify ion-text color="dark" class="margintop">
+      Created On:
+    </div>
+    <div class="normaltext bold half-margintop">
+      {{bkmkdetails?.Date}}
+    </div>
+    <hr />
+    <div class="text-center">
+      <span class="marginright mini-padding  text-success" (click)="onOpenComments()"> <i
+          class="fa fa-fw fa-commenting-o"></i>
+        {{bkmkdetails?.Comments}}</span>
+      <span class="marginright mini-padding text-primary " (click)="onOpenIndex()"><i
+          class="fa fa-fw fa-sticky-note-o"></i>
+        {{bkmkdetails?.Indexes}}</span>
+      <span class="marginright mini-padding text-info" (click)="onOpenTags()"><i
+          class="fa fa-fw fa-tag"></i>
+        {{bkmkdetails?.Tags}}</span>
+    </div>
+
+
+
+  </div>
+</ion-content>

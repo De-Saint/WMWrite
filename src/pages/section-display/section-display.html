@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Section Display</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="radius" #cardscroll *ngFor="let booksection of booksections; let i=index" >
+    <ion-card-header class="center" id="section_{{booksection.id}}">
+      <div class="bold smalltext half-padding"> {{booksection.IndexNumber}}</div>
+      <div class="newWrap"> {{booksection.Name}}</div>
+    </ion-card-header>
+
+    <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+      <div class="half-marginbottom">
+        <span class="smalltext">Date Modified:</span> {{booksection.LastEdit}}
+      </div>
+      <div class="">
+        <span class="marginright mini-padding text-secondary" (click)="onOpenBookMark(booksection.id)"> <i class="fa fa-fw fa-bookmark"></i>
+          {{booksection.Bookmarks}}</span>
+        <span class="marginright mini-padding text-success" (click)="onOpenComments(booksection.id)"> <i class="fa fa-fw fa-commenting-o"></i>
+          {{booksection.Comments}}</span>
+        <span class="marginright mini-padding text-primary" (click)="onOpenIndex(booksection.id)"><i class="fa fa-fw fa-sticky-note-o"></i>
+          {{booksection.Indexes}}</span>
+        <span class="marginright mini-padding text-info" (click)="onOpenTags(booksection.id)"><i class="fa fa-fw fa-tag"></i>
+          {{booksection.Tags}}</span>
+      </div>
+      <button ion-button color="dark" outline small (click)="onSectionOption(booksection.id, booksection)" class="half-margintop">
+       Option
+      </button>
+    </ion-card-title>
+    <ion-card-content>
+      <div id="SectionContnt" (click)="checkBookmark($event)" class="wrap normaltext" innerHTML="{{booksection.Content}}">
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar (click)="onTOContents()">
+    <ion-title>Table Of Contents</ion-title>
+  </ion-toolbar>
+</ion-footer>

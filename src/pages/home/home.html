@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-navbar color="light">
+    <img src="assets/imgs/icon.png" class="logomenu marginleft left" />
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="row toprow">
+    <div class="col">
+      <div class="card text-center bg-dark text-white" (click)="onNewBook()">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa fa-plus-circle fa-fw fa-2x"></i></h5>
+          <div class="card-title font-weight-bold mt-3 pt-3">Create New Book</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row toprow ">
+      <div class="col">
+          <div class="card h-100 bg-warning border-0">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold">Object<br />Categories</h5>
+              <div class="card-text mediumtext">Interact with all WealthMarket Books and Articles through our selected categories. </div>
+            </div>
+            <div class="card-footer text-center border-top-0 bg-warning">
+              <button type="button" class="btn btn-outline-dark" (click)="onCategory()"><i
+                  class="fa fa-arrow-circle-o-right fa-fw fa-2x"></i></button>
+            </div>
+          </div>
+        </div>
+    <div class="col">
+      <div class="card border-0 bg-info text-white">
+        <div class="card-body">
+          <h5 class="card-title">Search <br />Books / Artciles</h5>
+          <div class="card-text mediumtext mb-3">
+            Find any Book, Article or other WealthMarket W.R.I.T.E objects in the system.
+          </div>
+        </div>
+        <div class="card-footer text-center border-top-0 bg-info">
+          <button type="button" class="btn btn-outline-light" (click)="onSearch()"><i
+              class="fa fa-arrow-circle-o-right fa-fw fa-2x"></i></button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="row ">
+    <div class="col">
+      <div class="card text-center bg-primary text-white" (click)="onCreateIndex()">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa fa-plus-circle fa-fw fa-2x"></i></h5>
+          <div class="card-title font-weight-bold mt-3 pt-3">Create New Index</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row d-none">
+    <div class="col">
+      <div class="card h-100 border-0 bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">Save<br />Section Offline</h5>
+          <div class="card-text mediumtext mb-3 ">Save Section Offline for reading and editing
+          </div>
+        </div>
+        <div class="card-footer text-center bg-primary border-top-0">
+          <button type="button" class="btn btn-outline-light" (click)="onLibrary()"><i
+              class="fa fa-arrow-circle-o-right fa-fw fa-2x"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">Object<br />Categories</h5>
+          <div class="card-text mediumtext">Interact with all WealthMarket Objects. </div>
+        </div>
+        <div class="card-footer text-center border-top-0 bg-light">
+          <button type="button" class="btn btn-outline-dark" (click)="onCategory()"><i
+              class="fa fa-arrow-circle-o-right fa-fw fa-2x"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <ion-card class="" *ngFor="let book of books">
+    <ion-card-header class="center">
+      <div class="newWrap text"> {{book.Title}}</div>
+    </ion-card-header>
+
+    <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+      <div class="half-marginbottom d-none">
+        <span class="smalltext">Date Created:</span> {{book.DateCreated}}
+      </div>
+      <div class="half-marginbottom">
+        <span class="smalltext">Created By:</span> {{book.CreatorName}}
+      </div>
+    </ion-card-title>
+    <ion-card-content class="text-center neg-margintop">
+      <div id="SectionContnt" class="wrap normaltext text" innerHTML="{{book.Summary}}">
+      </div>
+      <div class="margintop half-marginbottom">
+        <span class="marginright mini-padding text-secondary" (click)="onOpenSections(book.id)"> <i
+            class="fa fa-fw fa-list"></i>
+          {{book.Sections}}
+        </span>
+        <span class="marginright mini-padding text-success" (click)="onOpenComments(book.id)"> <i
+            class="fa fa-fw fa-commenting-o"></i>
+          {{book.Comments}}</span>
+        <span class="marginright mini-padding text-primary" (click)="onOpenIndex(book.id)"><i
+            class="fa fa-fw fa-sticky-note-o"></i>
+          {{book.Indexes}}</span>
+        <span class="marginright mini-padding text-info " (click)="onOpenTags(book.id)"><i class="fa fa-fw fa-tag"></i>
+          {{book.Tags}}</span>
+      </div>
+      <button ion-button color="dark" outline small (click)="OpenBook(book.id)" class="half-margintop">
+        Details
+      </button>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

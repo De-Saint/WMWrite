@@ -1,0 +1,39 @@
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="ios-arrow-down" pullingText="Pull to reload Tags" refreshingSpinner="circles"
+      refreshingText="Reloading Tags...">>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" [showCancelButton]="true"
+    (ionClear)="onClear($event)" (ionInput)="SearchTags()"></ion-searchbar>
+
+  <ion-list>
+    <button ion-item *ngFor="let tag of tags" (click)="openTagOption(tag.id, tag.name, tag)" class="half-marginbottom">
+      {{tag.name}}<span hidden="true">{{tag.id}}</span>
+    </button>
+  </ion-list>
+
+
+  <div *ngIf="notags === 'none'" class="marginleft paddingleft marginright paddingright marginbottom">
+    <div class="normaltext center bold greentext half-padding" (click)="getlessTags()">
+      <i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Back to Top
+    </div>
+  </div>
+  
+  <ion-infinite-scroll (ionInfinite)="LoadMoreTags($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more tags...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-input type="text" value="" name="tagname" [(ngModel)]="taginput.tagname" class="border radius slightly-largetext half-padding"></ion-input>
+    <ion-buttons end>
+      <button ion-button icon-end color="dark" (click)="onSave()">
+        Save
+        <ion-icon name="save"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

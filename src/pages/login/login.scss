@@ -1,0 +1,20 @@
+page-login {
+  .wallpaper{
+      background: url("../assets/imgs/write.jpg") no-repeat center center;
+      background-size: cover;
+    }
+    img{
+      margin-top: 5em;
+      width: 5em;
+      height: 5em;
+    }
+    
+    #signincontainer{
+     margin-top: 15em;
+    }
+    .showpassword{
+    position: relative;
+    right:0.7em;
+    bottom: 2em;
+    }
+}

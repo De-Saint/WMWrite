@@ -1,0 +1,79 @@
+page-book-details {
+  // .scroll-content {
+  //   margin-top: 4em !important;
+  // }
+  ion-card-header {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal !important;
+  }
+
+  .card-content-ios {
+    padding: 7px 16px 14px !important;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  .card-header-ios {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #333;
+    padding: 11px !important;
+  }
+
+  .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: transparent !important;
+    border-bottom: none !important;
+  }
+
+  .SearchBtn {
+    align-items: center;
+    margin-left: 5.5em;
+  }
+
+  .btn22 {
+    height: 48px;
+  }
+
+  .BtnText2 {
+    height: 48px;
+    width: 150px;
+
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 39px;
+    letter-spacing: 0.320312px;
+  }
+
+
+  .object-item {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16%;
+    padding: .5em 0;
+    margin-bottom: .4em;
+    text-align: center;
+  }
+
+  .summaryContainer {
+    height: 50px;
+    overflow-x: visible;
+  
+  }
+
+
+}
+.action-sheet-ios .action-sheet-button {
+  margin: 0;
+  padding: 18px;
+  min-height: 5.6rem;
+  border-bottom: 0.55px solid #d6d6da;
+  font-size: 2rem;
+  color: #000 !important;
+  background: transparent;
+}

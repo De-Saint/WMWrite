@@ -1,0 +1,31 @@
+page-library {
+  .logomenu {
+    width: 1.5em !important;
+    height: 1.5em !important;
+  }
+}
+
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+  border-width: 0;
+}
+
+.toolbar-ios-light .toolbar-background-ios {
+  background: none !important;
+}
+
+.header-ios .toolbar-background-ios,
+.footer-ios .toolbar-background-ios {
+  border-style: none !important;
+  border-color: transparent !important;
+}
+
+.toolbar-background-ios {
+  background: none !important;
+}
+.toolbar-md-light .toolbar-background-md {
+    background: none !important;
+}
+.toolbar-background-md {
+    border-color:transparent !important;
+    background: none !important;
+}

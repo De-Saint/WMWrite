@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" [showCancelButton]="true"
+      (ionClear)="onClear($event)" (ionInput)="GlobalSearch()">
+    </ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar no-border>
+    <ion-segment [(ngModel)]="SEARCH" color="dark">
+      <ion-segment-button value="books" (click)="BookSearch()">
+        Books
+      </ion-segment-button>
+      <ion-segment-button value="articles" (click)="ArticlesSearch()">
+        Articles
+      </ion-segment-button>
+      <ion-segment-button value="indexes" (click)="IndexSearch()">
+        Indexes
+      </ion-segment-button>
+      <ion-segment-button value="tags" (click)="TagsSearch()">
+        Tags
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="SEARCH">
+    <ion-list *ngSwitchCase="'books'">
+        <ion-card class="" *ngFor="let book of books; let i=index">
+            <ion-card-header class="center">
+              <div class="newWrap text"> {{book.Title}}</div>
+            </ion-card-header>
+        
+            <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+              <div class="half-marginbottom d-none">
+                <span class="smalltext">Date Created:</span> {{book.DateCreated}}
+              </div>
+              <div class="half-marginbottom">
+                <span class="smalltext">Created By:</span> {{book.CreatorName}}
+              </div>
+        
+            </ion-card-title>
+            <ion-card-content class="text-center neg-margintop">
+              <div id="SectionContnt" class="wrap normaltext text" innerHTML="{{book.Summary}}">
+              </div>
+              <div class="half-margintop">
+                <span class="marginright mini-padding text-secondary" (click)="onOpenSections(book.id)"> <i
+                    class="fa fa-fw fa-list"></i>
+                  {{book.Sections}}
+                </span>
+                <span class="marginright mini-padding text-success" (click)="onOpenComments(book.id)"> <i
+                    class="fa fa-fw fa-commenting-o"></i>
+                  {{book.Comments}}</span>
+                <span class="marginright mini-padding text-primary" (click)="onOpenIndex(book.id)"><i
+                    class="fa fa-fw fa-sticky-note-o"></i>
+                  {{book.Indexes}}</span>
+                <span class="marginright mini-padding text-info " (click)="onOpenTags(book.id)"><i
+                    class="fa fa-fw fa-tag"></i>
+                  {{book.Tags}}</span>
+              </div>
+              <button ion-button color="dark" outline small (click)="OpenBook(book.id)" class="half-margintop">
+                Details
+              </button>
+            </ion-card-content>
+        
+          </ion-card>
+      <div class="marginleft paddingleft marginright paddingright marginbottom margintop" *ngIf="nobooks === 'nobooks'">
+        No result for Books
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'articles'">
+        <ion-card class="" *ngFor="let article of articles">
+            <ion-card-header class="center">
+              <div class="newWrap text"> {{article.Title}}</div>
+            </ion-card-header>
+        
+            <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+              <div class="half-marginbottom d-none">
+                <span class="smalltext">Date Created:</span> {{article.DateCreated}}
+              </div>
+              <div class="half-marginbottom">
+                <span class="smalltext">Created By:</span> {{article.CreatorName}}
+              </div>
+        
+            </ion-card-title>
+            <ion-card-content class="text-center">
+              <div id="SectionContnt" class="wrap normaltext text" innerHTML="{{article.Summary}}">
+              </div>
+              <div class="half-margintop">
+                <span class="marginright mini-padding text-secondary" (click)="onOpenSections(article.id)"> <i
+                    class="fa fa-fw fa-list"></i>
+                  {{article.Sections}}
+                </span>
+                <span class="marginright mini-padding text-success" (click)="onOpenComments(article.id)"> <i
+                    class="fa fa-fw fa-commenting-o"></i>
+                  {{article.Comments}}</span>
+                <span class="marginright mini-padding text-primary" (click)="onOpenIndex(article.id)"><i
+                    class="fa fa-fw fa-sticky-note-o"></i>
+                  {{article.Indexes}}</span>
+                <span class="marginright mini-padding text-info " (click)="onOpenTags(article.id)"><i
+                    class="fa fa-fw fa-tag"></i>
+                  {{article.Tags}}</span>
+              </div>
+              <button ion-button color="dark" outline small (click)="OpenBook(article.id)" class="half-margintop">
+                Details
+              </button>
+            </ion-card-content>
+        
+          </ion-card>
+     <div class="marginleft paddingleft marginright paddingright marginbottom margintop"
+        *ngIf="noarticles  === 'noarticles'">
+        No results
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'indexes'">
+      <ion-card class="" *ngFor="let index of indexes">
+        <ion-card-header class="center">
+          <div class="newWrap"> {{index.header}}</div>
+        </ion-card-header>
+        <ion-card-title class="center marginbottom half-neg-margintop">
+          <div class="newWrap underline marginbottom neg-margintop halfpadding"> {{index.subheader}}</div>
+        </ion-card-title>
+
+        <ion-card-title class="normaltext neg-margintop" style="text-align: center;">
+          <div class="half-marginbottom">
+            <span class="marginright mini-padding text-warning" (click)="onOpenIndexBooks(index.id)"> <i
+                class="fa fa-fw fa-book"></i>{{index.Books}}</span>
+            <span class="marginright mini-padding text-secondary" (click)="onOpenIndexSections(index.id)">
+              <i class="fa fa-fw fa-list"></i>{{index.Sections}}</span>
+            <span class="marginright mini-padding text-success" (click)="onOpenIndexComments(index.id)"> <i
+                class="fa fa-fw fa-commenting-o"></i>
+              {{index.Comments}}</span>
+            <span class="marginright mini-padding text-primary" (click)="onOpenIndexBookMarks(index.id)"><i
+                class="fa fa-fw fa-sticky-note-o"></i>
+              {{index.Bookmarks}}</span>
+            <span class="marginright mini-padding text-info" (click)="onOpenIndexTags(index.id)"><i
+                class="fa fa-fw fa-tag"></i>
+              {{index.Tags}}</span>
+          </div>
+          <button ion-button color="dark" outline small (click)="OpenIndex(index)" class="half-margintop">
+            Option
+          </button>
+        </ion-card-title>
+        <ion-card-content>
+          <div id="SectionContnt" class="wrap normaltext" innerHTML="{{index.body_text}}">
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+      <div class="marginleft paddingleft marginright paddingright marginbottom margintop"
+        *ngIf="noindexes === 'noindexes'">
+        No results for Indexes
+      </div>
+    </ion-list>
+    <ion-list *ngSwitchCase="'tags'">
+      <ion-list>
+        <button ion-item *ngFor="let tag of tags" (click)="OpenTag(tag)" class="half-marginbottom">
+          {{tag.name}}<span hidden="true">{{tag.id}}</span>
+        </button>
+      </ion-list>
+      <div class="marginleft paddingleft marginright paddingright marginbottom margintop" *ngIf="notags === 'notags'">
+        No results for Tags
+      </div>
+    </ion-list>
+
+  </div>
+</ion-content>
